@@ -1,0 +1,19 @@
+:root {
+    --gray-900: #101828;
+    --transparent-black-64: rgba(0, 0, 0, 0.64);
+    --letter-spacing-expanded: 6px;
+}
+
+@font-face {
+    font-family: 'Eulyoo1945';
+    src: url('/season/resources/common/font/Eulyoo1945-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eulyoo1945';
+    src: url('/season/resources/common/font/Eulyoo1945-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}

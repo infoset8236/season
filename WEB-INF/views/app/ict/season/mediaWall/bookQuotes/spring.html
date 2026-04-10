@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/resources/common/css/reset.css">
+    <link rel="stylesheet" href="/resources/common/css/common.css">
+    <link rel="stylesheet" href="/resources/mediaWall/css/bookQuotes/spring.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <video id="bgVideo1" autoplay muted playsinline></video>
+    <video id="bgVideo2" muted playsinline></video>
+    <div class="swiper">
+        <div class="swiper-wrapper"></div>
+    </div>
+    <div class="library">infoset library</div>
+</div>
+
+<script>
+    $(function () {
+        $.getJSON('/resources/common/data/spring.json', function (data) {
+            var springData = data.filter(item => item.season === '봄');
+
+            springData.forEach(item => {
+                var color = item.color || '#FFF';
+                $('.swiper-wrapper').append(
+                    `<div class="swiper-slide" data-video="${item.video}" data-color="${color}">
+                        <div class="quote" style="color:${color}">${item.quote.replace(/\\n/g, '<br>')}</div>
+                        <div class="book-info">
+                            <div class="book" style="color:${color}">${item.book}</div>
+                            <span class="divider" style="--divider-color:${color}"></span>
+                            <div class="author" style="color:${color}">${item.author}</div>
+                        </div>
+                    </div>`
+                );
+            });
+
+            $('.library').css('color', springData[0]?.color || '#FFF');
+
+            var $v1 = $('#bgVideo1');
+            var $v2 = $('#bgVideo2');
+            var currentSrc = '';
+
+            $v1.add($v2).on('ended', function () {
+                this.currentTime = 0;
+                this.play();
+            });
+
+            function setVideo(slide) {
+                var src = '/resources/mediaWall/video/' + $(slide).data('video');
+                if (src === currentSrc) return;
+                currentSrc = src;
+
+                var $active = $v1.css('opacity') === '1' ? $v1 : $v2;
+                var $next   = $active === $v1 ? $v2 : $v1;
+
+                $next.attr('src', src)[0].play();
+                $next.css('opacity', 1);
+                $active.css('opacity', 0);
+            }
+
+            function animate(slide, name, duration) {
+                $(slide).find('.quote, .book-info').css('animation', `${name} ${duration} cubic-bezier(0.22, 1, 0.36, 1) forwards`);
+            }
+
+            var swiper = new Swiper('.swiper', {
+                effect: 'fade',
+                fadeEffect: { crossFade: true },
+                speed: 3000,
+                loop: true,
+                autoplay: { delay: 9000, disableOnInteraction: false },
+                on: {
+                    slideChangeTransitionStart: function () {
+                        var active = this.slides[this.activeIndex];
+                        $('.library').css('color', $(active).data('color') || '#FFF');
+                        $('.swiper-slide:not(.swiper-slide-duplicate)').not(active).each(function () {
+                            animate(this, 'hideBlur', '0.8s');
+                        });
+                        active.offsetHeight;
+                        animate(active, 'revealBlur', '1.6s');
+                    },
+                    slideChangeTransitionEnd: function () {
+                        setVideo(this.slides[this.activeIndex]);
+                    }
+                }
+            });
+
+            var firstSrc = '/resources/mediaWall/video/' + $(swiper.slides[swiper.activeIndex]).data('video');
+            currentSrc = firstSrc;
+            $v1.attr('src', firstSrc)[0].play();
+        });
+    });
+</script>
+</body>
+</html>

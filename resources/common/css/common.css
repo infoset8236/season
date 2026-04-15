@@ -1,9 +1,34 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+/* Global Variables */
 :root {
+    /* color */
+    --gray-800: #1E2939;
     --gray-900: #101828;
+    --base-white: #FFF;
     --transparent-black-64: rgba(0, 0, 0, 0.64);
-    --letter-spacing-expanded: 6px;
+    --transparent-white-32: rgba(255, 255, 255, 0.32);
+
+    /* spacing */
+    --spacing-16: 16px;
+    --spacing-24: 24px;
+    --spacing-32: 32px;
+    --spacing-40: 40px;
+    --spacing-72: 72px;
+
+    /* typography */
+    --body-font-size-xs: 48px;
+    --body-line-height-xs: 64px;
+    --body-letter-spacing: -0.8px;
+    --body-font-weight-medium: 500;
+    --body-font-weight-bold: 700;
+
+    /* logo */
+    --logo-light: url('/season/resources/common/img/logo-light.png');
+    --logo-dark: url('/season/resources/common/img/logo-dark.png');
 }
 
+/* Fonts */
 @font-face {
     font-family: 'Eulyoo1945';
     src: url('/season/resources/common/font/Eulyoo1945-Regular.woff2') format('woff2');
@@ -16,4 +41,211 @@
     src: url('/season/resources/common/font/Eulyoo1945-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
+}
+
+/* Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img, video, svg {
+    display: block;
+    max-width: 100%;
+}
+
+button, input, textarea, select {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid currentColor;
+}
+
+/* Season Themes */
+.spring {
+    --color-primary-700: #E60076;
+    --color-primary-500: #FB64B6;
+    --color-primary-300: #FDA5D5;
+    --color-primary-100: #FCE7F3;
+    --color-accent: #F0B100;
+    --bg-image: url('/season/resources/common/img/bg-spring.png');
+    --bg-image-fallback: url('/season/resources/common/img/empty-spring.png');
+}
+
+.summer {
+    --color-primary-700: #155DFC;
+    --color-primary-500: #51A2FF;
+    --color-primary-300: #8EC5FF;
+    --color-primary-100: #DBEAFE;
+    --color-accent: #009689;
+    --bg-image: url('/season/resources/common/img/bg-summer.png');
+    --bg-image-fallback: url('/season/resources/common/img/empty-summer.png');
+
+}
+
+.autumn {
+    --color-primary-700: #CA3500;
+    --color-primary-500: #FF6900;
+    --color-primary-300: #FFB86A;
+    --color-primary-100: #FFEDD4;
+    --color-accent: #973C00;
+    --bg-image: url('/season/resources/common/img/bg-autumn.png');
+    --bg-image-fallback: url('/season/resources/common/img/empty-autumn.png');
+}
+
+.winter {
+    --color-primary-700: #4F39F6;
+    --color-primary-500: #432DD7;
+    --color-primary-300: #A3B3FF;
+    --color-primary-100: #E0E7FF;
+    --color-accent: #364153;
+    --bg-image: url('/season/resources/common/img/bg-winter.png');
+    --bg-image-fallback: url('/season/resources/common/img/empty-winter.png');
+}
+
+/* Common Components */
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: var(--color-bg);
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    color: var(--color-text);
+}
+
+#header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-32) var(--spacing-72);
+    --header-color: var(--gray-800);
+    --header-bg: var(--transparent-white-32);
+    --header-logo: var(--logo-light);
+}
+
+#header.dark {
+    --header-color: var(--base-white);
+    --header-bg: var(--transparent-black-64);
+    --header-logo: var(--logo-dark);
+}
+
+#header {
+    background: var(--header-bg);
+    backdrop-filter: blur(calc(var(--spacing-40) / 2));
+    color: var(--header-color);
+}
+
+#header.dark {
+    backdrop-filter: none;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 63px;
+    position: relative;
+}
+
+.logo {
+    height: 80px;
+    aspect-ratio: 499/80;
+    background-image: var(--header-logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.operationTime {
+    font-size: var(--body-font-size-xs);
+    font-weight: var(--body-font-weight-medium);
+    line-height: var(--body-line-height-xs);
+    letter-spacing: var(--body-letter-spacing);
+}
+
+.operationTime span {
+    margin-left: var(--spacing-16);
+    font-weight: var(--body-font-weight-bold);
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-24);
+}
+
+.currentDate {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: var(--body-font-size-xs);
+    font-weight: var(--body-font-weight-medium);
+    line-height: var(--body-line-height-xs);
+    letter-spacing: var(--body-letter-spacing);
+}
+
+.currentDate span {
+    font-weight: var(--body-font-weight-bold);
+}
+
+.weather {
+    width: 120px;
+    height: 120px;
+    object-fit: none;
+    display: block;
+    visibility: hidden;
 }

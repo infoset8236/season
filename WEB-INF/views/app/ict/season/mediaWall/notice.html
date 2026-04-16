@@ -80,12 +80,15 @@
         var $pagination = $('.pagination');
         var $items = $list.find('.noticeItem');
         var totalCount = $items.length;
+        var SKELETON_DURATION = 5000;
+        var SKELETON_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
         $items.each(function (i) {
             $(this).attr('data-index', i);
         });
         $items.removeClass('center');
         $pagination.html('<span>1</span> / ' + totalCount);
+        $list.addClass('loading');
         $list.addClass('owl-carousel');
 
         function syncCenter() {
@@ -99,7 +102,31 @@
             }
         }
 
-        $list.on('initialized.owl.carousel translated.owl.carousel', syncCenter);
+        function startSkeleton() {
+            $list.find('.owl-item img').each(function () {
+                $(this).attr('data-skeleton-src', this.src || '');
+                this.src = SKELETON_PLACEHOLDER;
+            });
+        }
+
+        function endSkeleton() {
+            $list.find('.owl-item img').each(function () {
+                var src = $(this).attr('data-skeleton-src');
+                if (src !== undefined) {
+                    this.src = src;
+                    $(this).removeAttr('data-skeleton-src');
+                }
+            });
+            $list.removeClass('loading');
+        }
+
+        $list.on('initialized.owl.carousel', function () {
+            syncCenter();
+            startSkeleton();
+            setTimeout(endSkeleton, SKELETON_DURATION);
+        });
+
+        $list.on('translated.owl.carousel', syncCenter);
 
         $list.owlCarousel({
             autoWidth: true,

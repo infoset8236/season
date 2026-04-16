@@ -170,3 +170,38 @@
 .pagination span {
     font-weight: var(--Body-font-weight-bold);
 }
+
+@keyframes skeletonShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.noticeList.loading .qrCode,
+.noticeList.loading .noticeThumbnail,
+.noticeList.loading .noticeIndex,
+.noticeList.loading .noticeTitle,
+.noticeList.loading .actionLabel {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.06) 0%,
+        rgba(0, 0, 0, 0.14) 50%,
+        rgba(0, 0, 0, 0.06) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.4s infinite linear;
+    color: transparent;
+    border-radius: var(--border-radius-md);
+}
+
+.noticeList.loading .noticeThumbnail {
+    border-radius: var(--border-radius-xl);
+}
+
+.noticeList.loading .noticeIndex {
+    align-self: flex-start;
+    width: 120px;
+}
+
+.noticeList.loading .qrAction {
+    background: transparent;
+}

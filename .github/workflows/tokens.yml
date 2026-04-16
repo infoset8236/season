@@ -1,0 +1,20 @@
+name: Build Tokens
+
+on:
+  push:
+    paths:
+      - 'resources/common/data/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install
+      - run: npx style-dictionary build --config sd.config.js
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore: update CSS variables from tokens'

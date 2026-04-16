@@ -1,0 +1,41 @@
+.list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-104);
+    overflow: hidden;
+    height: 100%;
+    margin-top: 120px;
+}
+
+.listItem {
+    position: relative;
+    border-radius: var(--border-radius-3xl, 40px);
+    border: var(--border-width-md, 2px) solid var(--transparent-white-64, rgba(255, 255, 255, 0.64));
+    background: var(--transparent-white-64, rgba(255, 255, 255, 0.64));
+    box-shadow: 0 4px var(--spacing-40, 40px) 0 var(--transparent-black-12, rgba(0, 0, 0, 0.12));
+    backdrop-filter: blur(calc(var(--spacing-80, 80px) / 2));
+}
+
+.goDetail {
+    position: absolute;
+    top: 0;
+    right: 56px;
+    border-radius: 0 0 var(--border-radius-md, 8px) var(--border-radius-md, 8px);
+    background: var(--base-white, #FFF);
+    display: flex;
+    padding: var(--spacing-24, 24px) var(--spacing-16, 16px) var(--spacing-16, 16px) var(--spacing-16, 16px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-8, 8px);
+}
+
+.qrCode {
+    width: 136px;
+    height: 136px;
+}
+
+.thumbnail {
+    height: 1064px;
+    border-radius: var(--border-radius-xl, 24px);
+}

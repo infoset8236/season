@@ -1,0 +1,23 @@
+{
+  "name": "season",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infoset8236/season.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infoset8236/season/issues"
+  },
+  "homepage": "https://github.com/infoset8236/season#readme",
+  "dependencies": {
+    "style-dictionary": "^5.4.0"
+  }
+}

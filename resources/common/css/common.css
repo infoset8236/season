@@ -6,15 +6,21 @@
     --gray-800: #1E2939;
     --gray-900: #101828;
     --base-white: #FFF;
+    --transparent-black-40: rgba(0, 0, 0, 0.40);
     --transparent-black-64: rgba(0, 0, 0, 0.64);
+    --transparent-white-20: rgba(255, 255, 255, 0.20);
     --transparent-white-32: rgba(255, 255, 255, 0.32);
 
     /* spacing */
+    --spacing-2: 2px;
+    --spacing-12: 12px;
     --spacing-16: 16px;
     --spacing-24: 24px;
     --spacing-32: 32px;
     --spacing-40: 40px;
+    --spacing-48: 48px;
     --spacing-72: 72px;
+    --spacing-104: 104px;
 
     /* typography */
     --body-font-size-xs: 48px;
@@ -23,9 +29,19 @@
     --body-font-weight-medium: 500;
     --body-font-weight-bold: 700;
 
+    --Body-font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    --Body-xs-font-size: 48px;
+    --Body-xs-line-height: 64px;
+    --Body-letter-spacing: -0.8px;
+    --Body-font-weight-regular: 400;
+
     /* logo */
     --logo-light: url('/season/resources/common/img/logo-light.png');
     --logo-dark: url('/season/resources/common/img/logo-dark.png');
+
+    /* default theme */
+    --color-bg: var(--base-white);
+    --color-text: var(--gray-900);
 }
 
 /* Fonts */
@@ -179,35 +195,45 @@ hr {
 }
 
 #header.dark {
+    backdrop-filter: none;
     --header-color: var(--base-white);
     --header-bg: var(--transparent-black-64);
     --header-logo: var(--logo-dark);
+    --divider-color: var(--transparent-white-20);
 }
 
 #header {
     background: var(--header-bg);
     backdrop-filter: blur(calc(var(--spacing-40) / 2));
     color: var(--header-color);
-}
-
-#header.dark {
-    backdrop-filter: none;
+    --divider-color: var(--transparent-black-40);
 }
 
 .headerLeft {
     display: flex;
     align-items: center;
-    gap: 63px;
-    position: relative;
+    gap: 50px;
 }
 
 .logo {
+    position: relative;
     height: 80px;
     aspect-ratio: 499/80;
     background-image: var(--header-logo);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.logo::after {
+    content: '|';
+    position: absolute;
+    right: -26px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--spacing-2);
+    height: var(--spacing-48);
+    background: var(--divider-color);
 }
 
 .operationTime {
@@ -245,7 +271,6 @@ hr {
 .weather {
     width: 120px;
     height: 120px;
-    object-fit: none;
     display: block;
     visibility: hidden;
 }

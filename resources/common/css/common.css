@@ -6,21 +6,36 @@
     --gray-800: #1E2939;
     --gray-900: #101828;
     --base-white: #FFF;
+    --transparent-black-12: rgba(0, 0, 0, 0.12);
+    --transparent-black-32: rgba(0, 0, 0, 0.32);
     --transparent-black-40: rgba(0, 0, 0, 0.40);
     --transparent-black-64: rgba(0, 0, 0, 0.64);
     --transparent-white-20: rgba(255, 255, 255, 0.20);
     --transparent-white-32: rgba(255, 255, 255, 0.32);
+    --transparent-white-64: rgba(255, 255, 255, 0.64);
 
     /* spacing */
+    --spacing-0: 0;
     --spacing-2: 2px;
+    --spacing-8: 8px;
     --spacing-12: 12px;
     --spacing-16: 16px;
+    --spacing-20: 20px;
     --spacing-24: 24px;
     --spacing-32: 32px;
     --spacing-40: 40px;
     --spacing-48: 48px;
+    --spacing-64: 64px;
     --spacing-72: 72px;
+    --spacing-80: 80px;
     --spacing-104: 104px;
+
+    /* border */
+    --border-radius-md: 8px;
+    --border-radius-xl: 24px;
+    --border-radius-3xl: 40px;
+    --border-radius-rounded: 999999px;
+    --border-width-md: 2px;
 
     /* typography */
     --body-font-size-xs: 48px;
@@ -30,10 +45,20 @@
     --body-font-weight-bold: 700;
 
     --Body-font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    --Body-4xs-font-size: 32px;
+    --Body-4xs-line-height: 40px;
+    --Body-3xs-font-size: 36px;
+    --Body-2xs-font-size: 40px;
+    --Body-2xs-line-height: 56px;
     --Body-xs-font-size: 48px;
     --Body-xs-line-height: 64px;
+    --Body-sm-font-size: 56px;
+    --Body-sm-line-height: 72px;
     --Body-letter-spacing: -0.8px;
     --Body-font-weight-regular: 400;
+    --Body-font-weight-medium: 500;
+    --Body-font-weight-semi-bold: 600;
+    --Body-font-weight-bold: 700;
 
     /* logo */
     --logo-light: url('/season/resources/common/img/logo-light.png');
@@ -226,7 +251,7 @@ hr {
 }
 
 .logo::after {
-    content: '|';
+    content: '';
     position: absolute;
     right: -26px;
     top: 50%;

@@ -1,41 +1,172 @@
-.list {
+.noticeList {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-104);
     overflow: hidden;
-    height: 100%;
-    margin-top: 120px;
 }
 
-.listItem {
+.noticeItem {
     position: relative;
-    border-radius: var(--border-radius-3xl, 40px);
-    border: var(--border-width-md, 2px) solid var(--transparent-white-64, rgba(255, 255, 255, 0.64));
-    background: var(--transparent-white-64, rgba(255, 255, 255, 0.64));
-    box-shadow: 0 4px var(--spacing-40, 40px) 0 var(--transparent-black-12, rgba(0, 0, 0, 0.12));
-    backdrop-filter: blur(calc(var(--spacing-80, 80px) / 2));
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-40);
+    width: 824px;
+    height: 1404px;
+    margin: 0 52px;
+    padding: var(--spacing-0) var(--spacing-40) var(--spacing-40);
+    border: var(--border-width-md) solid var(--transparent-white-64);
+    border-radius: var(--border-radius-3xl);
+    background: var(--transparent-white-64);
+    box-shadow: 0 4px var(--spacing-40) 0 var(--transparent-black-12);
+    backdrop-filter: blur(calc(var(--spacing-80) / 2));
 }
 
-.goDetail {
+.noticeItem.center {
+    width: 976px;
+    height: 1632px;
+}
+
+.qrAction {
     position: absolute;
     top: 0;
     right: 56px;
-    border-radius: 0 0 var(--border-radius-md, 8px) var(--border-radius-md, 8px);
-    background: var(--base-white, #FFF);
     display: flex;
-    padding: var(--spacing-24, 24px) var(--spacing-16, 16px) var(--spacing-16, 16px) var(--spacing-16, 16px);
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-8, 8px);
+    gap: var(--spacing-8);
+    padding: var(--spacing-24) var(--spacing-16) var(--spacing-16);
+    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+    background: var(--base-white);
 }
 
-.qrCode {
+.noticeItem.center .qrAction {
+    padding: var(--spacing-32) var(--spacing-24) var(--spacing-20);
+    border-radius: 0 0 var(--spacing-12) var(--spacing-12);
+}
+
+.owl-carousel .owl-item .noticeItem .qrCode {
     width: 136px;
     height: 136px;
 }
 
-.thumbnail {
+.owl-carousel .owl-item .noticeItem.center .qrCode {
+    width: 160px;
+    height: 160px;
+}
+
+.actionLabel {
+    color: var(--gray-800);
+    text-align: center;
+    font-size: var(--Body-4xs-font-size);
+    font-weight: var(--Body-font-weight-semi-bold);
+    line-height: var(--Body-4xs-line-height);
+    letter-spacing: var(--Body-letter-spacing);
+}
+
+.noticeItem.center .actionLabel {
+    font-size: var(--Body-3xs-font-size);
+}
+
+.noticeInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-12);
+    padding-top: var(--spacing-64);
+    padding-left: var(--spacing-16);
+}
+
+.noticeIndex {
+    color: var(--color-primary-500);
+    font-size: var(--Body-2xs-font-size);
+    font-weight: var(--Body-font-weight-bold);
+    line-height: var(--Body-2xs-line-height);
+    letter-spacing: var(--Body-letter-spacing);
+}
+
+.noticeItem.center .noticeIndex {
+    font-size: var(--Body-xs-font-size);
+    line-height: var(--Body-xs-line-height);
+}
+
+.noticeTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    width: 520px;
+    height: 128px;
+    color: var(--gray-800);
+    text-overflow: ellipsis;
+    font-size: var(--Body-xs-font-size);
+    font-weight: var(--Body-font-weight-semi-bold);
+    line-height: var(--Body-xs-line-height);
+    letter-spacing: var(--Body-letter-spacing);
+}
+
+.noticeItem.center .noticeTitle {
+    width: 632px;
+    height: 144px;
+    font-size: var(--Body-sm-font-size);
+    line-height: var(--Body-sm-line-height);
+}
+
+.noticeThumbnail {
+    width: 744px;
     height: 1064px;
-    border-radius: var(--border-radius-xl, 24px);
+    object-fit: cover;
+    border-radius: var(--border-radius-xl);
+}
+
+.noticeItem.center .noticeThumbnail {
+    width: 896px;
+    height: 1268px;
+}
+
+.noticeItem,
+.noticeItem .qrAction,
+.noticeItem .qrCode,
+.noticeItem .actionLabel,
+.noticeItem .noticeIndex,
+.noticeItem .noticeTitle,
+.noticeItem .noticeThumbnail {
+    transition: all 0.6s ease;
+}
+
+.noticeList.owl-carousel .owl-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 1816px;
+    padding-top: 120px;
+    padding-bottom: var(--spacing-64);
+}
+
+.noticeList.owl-carousel .owl-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: none;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-8);
+    width: fit-content;
+    height: 80px;
+    margin: 0 auto;
+    padding: var(--spacing-8) var(--spacing-40);
+    border-radius: var(--border-radius-rounded);
+    background: var(--transparent-black-32);
+    color: var(--base-white);
+    font-size: var(--Body-xs-font-size);
+    font-weight: var(--Body-font-weight-medium);
+    line-height: var(--Body-xs-line-height);
+    letter-spacing: var(--Body-letter-spacing);
+}
+
+.pagination span {
+    font-weight: var(--Body-font-weight-bold);
 }

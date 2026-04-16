@@ -7,7 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="/resources/common/css/common.css">
     <link rel="stylesheet" href="/resources/mediaWall/css/notice.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="/resources/common/js/common.js"></script>
 </head>
 <body>
@@ -19,15 +21,101 @@
                 <img class="qrCode" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
                 <span class="actionLabel">상세보기</span>
             </div>
-
             <div class="noticeInfo">
                 <span class="noticeIndex">01</span>
                 <p class="noticeTitle">원데이 쿠킹클래스 아직도 안먹어봄? 두쫀쿠x버터떡</p>
             </div>
-
+            <img class="noticeThumbnail" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+        </div>
+        <div class="noticeItem">
+            <div class="qrAction">
+                <img class="qrCode" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+                <span class="actionLabel">상세보기</span>
+            </div>
+            <div class="noticeInfo">
+                <span class="noticeIndex">02</span>
+                <p class="noticeTitle">원데이 쿠킹클래스 아직도 안먹어봄? 두쫀쿠x버터떡</p>
+            </div>
+            <img class="noticeThumbnail" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+        </div>
+        <div class="noticeItem">
+            <div class="qrAction">
+                <img class="qrCode" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+                <span class="actionLabel">상세보기</span>
+            </div>
+            <div class="noticeInfo">
+                <span class="noticeIndex">03</span>
+                <p class="noticeTitle">원데이 쿠킹클래스 아직도 안먹어봄? 두쫀쿠x버터떡</p>
+            </div>
+            <img class="noticeThumbnail" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+        </div>
+        <div class="noticeItem">
+            <div class="qrAction">
+                <img class="qrCode" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+                <span class="actionLabel">상세보기</span>
+            </div>
+            <div class="noticeInfo">
+                <span class="noticeIndex">04</span>
+                <p class="noticeTitle">원데이 쿠킹클래스 아직도 안먹어봄? 두쫀쿠x버터떡</p>
+            </div>
+            <img class="noticeThumbnail" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+        </div>
+        <div class="noticeItem">
+            <div class="qrAction">
+                <img class="qrCode" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
+                <span class="actionLabel">상세보기</span>
+            </div>
+            <div class="noticeInfo">
+                <span class="noticeIndex">05</span>
+                <p class="noticeTitle">원데이 쿠킹클래스 아직도 안먹어봄? 두쫀쿠x버터떡</p>
+            </div>
             <img class="noticeThumbnail" src="" alt="" onerror="this.src='/season/resources/common/img/empty-spring.png'">
         </div>
     </div>
+    <div class="pagination"></div>
 </div>
+<script>
+    $(function () {
+        var $list = $('.noticeList');
+        var $pagination = $('.pagination');
+        var $items = $list.find('.noticeItem');
+        var totalCount = $items.length;
+
+        $items.each(function (i) {
+            $(this).attr('data-index', i);
+        });
+        $items.removeClass('center');
+        $pagination.html('<span>1</span> / ' + totalCount);
+        $list.addClass('owl-carousel');
+
+        function syncCenter() {
+            $list.find('.noticeItem').removeClass('center');
+            var $centerItem = $list.find('.owl-item.center .noticeItem');
+            $centerItem.addClass('center');
+
+            var idx = parseInt($centerItem.attr('data-index'), 10);
+            if (!isNaN(idx)) {
+                $pagination.find('span').text(idx + 1);
+            }
+        }
+
+        $list.on('initialized.owl.carousel translated.owl.carousel', syncCenter);
+
+        $list.owlCarousel({
+            autoWidth: true,
+            center: true,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 10000,
+            autoplayHoverPause: false,
+            smartSpeed: 600,
+            nav: false,
+            dots: false,
+            mouseDrag: true,
+            touchDrag: true,
+            pullDrag: true
+        });
+    });
+</script>
 </body>
 </html>
